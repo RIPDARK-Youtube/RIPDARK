@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noai, noimageai, noarchive, noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<title>404 — Page Not Found | RIPDARK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+
+  :root {
+    --void: #0d0a16;
+    --void-2: #16111f;
+    --amethyst: #9b7fd4;
+    --amethyst-glow: #b79cf0;
+    --pearl: #5ce1c9;
+    --bone: #e9e4f2;
+    --bone-dim: #a89fbd;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--bone);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+    height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--void);
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(155,127,212,0.12), transparent 45%),
+      radial-gradient(circle at 90% 30%, rgba(92,225,201,0.08), transparent 40%),
+      linear-gradient(180deg, rgba(13,10,22,0.5), rgba(13,10,22,0.6) 40%, rgba(13,10,22,0.78)),
+      url('bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .wrap {
+    max-width: 480px;
+    padding: 32px 24px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--pearl);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+
+  .code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 96px;
+    line-height: 1;
+    margin: 0;
+    background: linear-gradient(135deg, var(--amethyst-glow), var(--pearl));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 4px 30px rgba(155,127,212,0.35);
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 18px 0 8px;
+    color: var(--bone);
+  }
+
+  p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--bone-dim);
+    margin: 0 0 28px;
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: var(--void);
+    background: linear-gradient(135deg, var(--amethyst-glow), var(--pearl));
+    padding: 13px 28px;
+    border-radius: 999px;
+    font-weight: 500;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+
+  .btn:hover, .btn:focus-visible {
+    transform: scale(1.04);
+    box-shadow: 0 8px 24px -8px rgba(155,127,212,0.6);
+  }
+
+  footer {
+    position: fixed;
+    top: 6px;
+    left: 6px;
+    text-align: left;
+    padding: 2px 6px;
+    color: #6b1a16;
+    font-size: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.01em;
+    z-index: 50;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="bg-layer"></div>
+<footer>© RIPDARK — do not redistribute</footer>
+
+<div class="wrap">
+  <p class="eyebrow">© RIPDARK</p>
+  <p class="code">404</p>
+  <h1>This page doesn't exist</h1>
+  <p>The addon or page you're looking for may have been moved, renamed, or removed. Head back to the main page to find what you need.</p>
+  <a class="btn" href="/youtube-RIPDARK/">← Back to RIPDARK</a>
+</div>
+
+</body>
+</html>
