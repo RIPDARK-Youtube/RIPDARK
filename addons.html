@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<!--
+  © RIPDARK — original site, all rights reserved.
+  Owner: RIP_DARK (ripdark-youtube.github.io)
+  Site created and maintained by RIPDARK. Do not copy, mirror, or
+  redistribute this HTML/CSS/JS without permission.
+  Watermark ID: RIPDARK-76681fbd98967845
+  First published: 2026-09
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noai, noimageai, noarchive">
+<meta name="copyright" content="© RIPDARK. All rights reserved.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<title>RIPDARK — Downloads</title>
+<link rel="icon" type="image/png" href="icon_1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void: #0d0a16;
+    --void-2: #16111f;
+    --slot: #1e1830;
+    --slot-border: #382a4f;
+    --amethyst: #9b7fd4;
+    --amethyst-glow: #b79cf0;
+    --pearl: #5ce1c9;
+    --bone: #e9e4f2;
+    --bone-dim: #a89fbd;
+    --danger: #ff6b5c;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--bone);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+    height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--void);
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(155,127,212,0.12), transparent 45%),
+      radial-gradient(circle at 90% 30%, rgba(92,225,201,0.08), transparent 40%),
+      linear-gradient(180deg, rgba(13,10,22,0.5), rgba(13,10,22,0.6) 40%, rgba(13,10,22,0.78)),
+      url('bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    padding: 44px 20px 28px;
+    text-align: center;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl);
+    margin: 0 0 10px;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 8vw, 46px);
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+    background: linear-gradient(180deg, #fff, var(--amethyst-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  header p.sub {
+    color: var(--bone-dim);
+    font-size: 14.5px;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .sub-gate {
+    text-align: center;
+    margin-top: 4px;
+    margin-bottom: 14px;
+  }
+
+  .sub-gate-text {
+    font-size: 12.5px;
+    color: var(--bone-dim);
+    margin: 0 0 10px;
+  }
+
+  .sub-confirm {
+    display: block;
+    margin: 10px auto 0;
+    background: var(--void-2);
+    border: 1px solid var(--slot-border);
+    color: var(--bone-dim);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color .15s ease, color .15s ease;
+  }
+
+  .sub-confirm.confirmed {
+    color: var(--pearl);
+    border-color: var(--pearl);
+  }
+
+  .sub-warning {
+    display: none;
+    position: relative;
+    background: rgba(255,90,90,0.12);
+    border: 1px solid rgba(255,90,90,0.4);
+    color: #ffb3b3;
+    border-radius: 12px;
+    padding: 12px 34px 12px 14px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  .sub-warning.show { display: block; }
+
+  .sub-warning p { margin: 0; }
+
+  .sub-warning-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #ffb3b3;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .sheet-download.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* ---------- Copyright protection ---------- */
+  * { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+  input, textarea { -webkit-user-select: text; user-select: text; }
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 16px auto 0;
+    padding: 0 20px;
+  }
+
+  .tab {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    background: var(--void-2);
+    border: 1px solid var(--slot-border);
+    color: var(--bone-dim);
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+
+  .tab.active {
+    color: var(--void);
+    background: linear-gradient(180deg, var(--amethyst-glow), var(--amethyst));
+    border-color: var(--amethyst);
+  }
+
+  .tab:not(.active):hover {
+    border-color: var(--amethyst);
+    color: var(--bone);
+  }
+
+  /* ---------- Search ---------- */
+  .search-wrap {
+    max-width: 480px;
+    margin: 28px auto 0;
+    padding: 0 20px;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--void-2);
+    border: 1px solid var(--slot-border);
+    border-radius: 12px;
+    padding: 13px 16px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .search-box:focus-within {
+    border-color: var(--amethyst);
+    box-shadow: 0 0 0 3px rgba(155,127,212,0.15);
+  }
+
+  .search-box svg { flex-shrink: 0; opacity: 0.6; }
+
+  .search-box input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--bone);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .search-box input::placeholder { color: var(--bone-dim); }
+
+  .result-count {
+    text-align: center;
+    font-size: 12px;
+    color: var(--bone-dim);
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Grid ---------- */
+  .grid {
+    max-width: 760px;
+    margin: 26px auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 14px;
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 0 14px;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+    }
+    .card-name {
+      font-size: 11.5px;
+    }
+    .card-tag {
+      font-size: 8.5px;
+    }
+  }
+
+  .card {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 14px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent, transparent);
+    opacity: 0;
+    transition: opacity .2s;
+  }
+
+  .card:active { transform: scale(0.96); }
+
+  .card:hover, .card:focus-visible {
+    border-color: transparent;
+    box-shadow: none;
+    outline: none;
+    transform: scale(1.04);
+  }
+
+  .card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.14);
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: var(--void);
+    border: 1px solid var(--slot-border);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.55);
+  }
+
+  .card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.25;
+    color: var(--bone);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.6);
+  }
+
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    color: var(--pearl);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+  }
+
+  .card-updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    color: var(--bone-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+    opacity: 0.9;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+  }
+
+  .empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--bone-dim);
+    font-size: 14px;
+  }
+
+  /* ---------- Detail sheet ---------- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6,4,10,0.7);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 10;
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+
+  .sheet {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    max-width: 520px;
+    margin: 0 auto;
+    background: var(--void-2);
+    border: 1px solid var(--slot-border);
+    border-bottom: none;
+    border-radius: 22px 22px 0 0;
+    padding: 10px 22px 28px;
+    transform: translateY(100%);
+    transition: transform .28s cubic-bezier(.32,.72,0,1);
+    z-index: 11;
+    max-height: 86vh;
+    overflow-y: auto;
+  }
+  .sheet.open { transform: translateY(0); }
+
+  .sheet-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--slot-border);
+    border-radius: 4px;
+    margin: 10px auto 18px;
+  }
+
+  .sheet-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .sheet-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.14);
+    overflow: hidden;
+    border: 1px solid var(--slot-border);
+    flex-shrink: 0;
+  }
+
+  .sheet-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+
+  .sheet-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--pearl);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .sheet-desc {
+    margin: 20px 0 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--bone-dim);
+    white-space: pre-line;
+  }
+
+  .sheet-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(180deg, var(--amethyst-glow), var(--amethyst));
+    color: #1a1226;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: 0 10px 24px -10px rgba(155,127,212,0.6);
+    transition: filter .15s;
+  }
+  .sheet-download:active { filter: brightness(0.92); }
+
+  .sheet-size {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--bone-dim);
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .sheet-installs {
+    text-align: center;
+    font-size: 12px;
+    color: var(--pearl);
+    margin-top: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+
+  .card-installs {
+    font-size: 10px;
+    color: var(--pearl);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 3px;
+    opacity: 0.85;
+  }
+
+  footer {
+    position: fixed;
+    top: 6px;
+    left: 6px;
+    text-align: left;
+    padding: 2px 6px;
+    color: #6b1a16;
+    font-size: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.01em;
+    z-index: 50;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="bg-layer"></div>
+<span aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">RIPDARK-original-site-watermark-76681fbd98967845-do-not-copy</span>
+<script src="https://apis.google.com/js/platform.js"></script>
+
+<header>
+  <p class="eyebrow">© RIPDARK</p>
+  <h1>RIPDARK</h1>
+  <p class="sub">Texture packs and addons made by RIP_DARK. Tap one to see the description and download it.</p>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input id="search" type="text" placeholder="Search for an addon...">
+  </div>
+</div>
+
+<p class="result-count" id="resultCount" style="text-align:center;"></p>
+
+<div class="grid" id="grid"></div>
+
+<footer>© RIPDARK — do not redistribute</footer>
+
+<div class="overlay" id="overlay"></div>
+<div class="sheet" id="sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-top">
+    <img class="sheet-icon" id="sheetIcon" src="" alt="">
+    <div>
+      <p class="sheet-meta" id="sheetTag"></p>
+      <h2 class="sheet-title" id="sheetTitle"></h2>
+    </div>
+  </div>
+  <p class="sheet-desc" id="sheetDesc"></p>
+
+  <div class="sub-gate" id="subGate">
+    <p class="sub-gate-text">Subscribe on YouTube, then tap the confirm button to unlock the download</p>
+    <div class="g-ytsubscribe" data-channelid="UCxQMDQf9LzZ5sTMVV2CcxRw" data-layout="full" data-count="default"></div>
+    <button class="sub-confirm" id="subConfirm">I subscribed — unlock download</button>
+  </div>
+
+  <div class="sub-warning" id="subWarning">
+    <button class="sub-warning-close" id="subWarningClose" aria-label="Close">&times;</button>
+    <p>You need to subscribe on YouTube first to unlock this download.</p>
+  </div>
+
+  <a class="sheet-download" id="sheetDownload" href="#" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v12"></path>
+      <path d="M7 10l5 5 5-5"></path>
+      <path d="M5 21h14"></path>
+    </svg>
+    Download
+  </a>
+  <p class="sheet-installs" id="sheetInstalls">— installs</p>
+  <p class="sheet-size" id="sheetSize"></p>
+  <p class="sheet-size" id="sheetUpdated"></p>
+</div>
+
+<script>
+  // ---------- Copyright protection ----------
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+  console.log('%c\u00A9 RIPDARK', 'color:#9b7fd4;font-size:20px;font-weight:bold;');
+  console.log('%cThis site and its content belong to RIPDARK. Copying is not permitted.', 'color:#e9e4f2;font-size:13px;');
+  console.log('%cWatermark ID: RIPDARK-76681fbd98967845 — this proves site origin. Copies of this code will contain the same ID.', 'color:#7a6b8f;font-size:10px;');
+</script>
+
+<script>
+  // ================================================================
+  // ADAUGĂ ADDON-URI NOI AICI. Copiază un obiect { ... } și modifică.
+  // icon = link către o imagine (poți folosi orice link direct .png/.jpg)
+  // download = linkul direct de pe GitHub Releases
+  // ================================================================
+  const addons = [
+    {
+      name: "Dynamic First Person Model",
+      baseInstalls: 15230,
+      tag: "Resource Pack",
+      category: "addons",
+      icon: "icon_3.jpg",
+      description: "Adds a visible first-person body: you can now see your character's arms, legs, and torso while playing, including underwater and while swimming, instead of just floating hands. Makes first-person gameplay feel more immersive and realistic, matching what other players see of you in third person.",
+      download: "https://github.com/ripdarkkorea-source/darksmp-addons/releases/download/v1.2/Dynamic.First.Person.Model.v1.5.2.mcaddon",
+      size: "N/A",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Enchant Icon for Bedrock",
+      baseInstalls: 22107,
+      tag: "Texture Pack",
+      category: "addons",
+      icon: "icon_4.jpg",
+      description: "Adds custom, colorful icons for enchanted books, replacing the default plain book texture with icons that clearly reflect each enchantment. Makes it much easier to recognize enchantments at a glance in your inventory or chests.",
+      download: "https://github.com/ripdarkkorea-source/darksmp-addons/releases/download/V3.0/enchant-icon-for-bedrock-1.0.1.mcpack",
+      size: "N/A",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Spectral Bedrock Edition",
+      baseInstalls: 13590,
+      tag: "Resource Pack",
+      category: "addons",
+      icon: "icon_6.jpg",
+      description: "This resource pack aims to keep a familiar tone, but with a bit more warmth. It is not vanilla-like, every texture has been created completely from scratch. Some blocks look decently different from their vanilla counterparts, but still fit in with the overall feel of Minecraft.",
+      download: "https://github.com/ripdarkkorea-source/darksmp-addons/releases/download/v2.0/SpectralBE_0.7.0.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "View Model A&S",
+      baseInstalls: 30412,
+      tag: "Resource Pack",
+      category: "addons",
+      icon: "icon_7.png",
+      description: "View Model A&S changes how your held items, arms, and camera are rendered in first person. It smooths and repositions the view model for a more natural feel while holding tools, weapons, or blocks, and pairs well with other Actions & Stuff-style animation packs on DarkSMP.",
+      download: "https://github.com/ripdarkkorea-source/darksmp-addons/releases/download/v1.5/ViewModel_AS.zip",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Better Sounds",
+      baseInstalls: 17045,
+      tag: "Resource Pack",
+      category: "addons",
+      icon: "icon_8.png",
+      description: "Better Sounds is a resource pack that replaces and enhances Minecraft's default audio, giving ambient noises, mobs, blocks, and actions a richer, more immersive feel while staying true to the vanilla Bedrock style.",
+      download: "https://github.com/ripdarkkorea-source/darksmp-addons/releases/download/v6/A.better.sounds.rp.1.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Paper Doll",
+      tag: "Resource Pack",
+      category: "addons",
+      baseInstalls: 24689,
+      icon: "icon_9.png",
+      description: "Paper Doll by LinXing is a resource pack that changes the player's appearance and animations for a cute, stylized paper-doll look on Minecraft: Bedrock Edition. Currently at v1.2.0.",
+      download: "https://github.com/ripdarkkorea-source/darksmp-addons/releases/download/5/Linxing.s.Paper.Doll.v1.2.0.1.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "AFK Director",
+      tag: "Behavior Pack",
+      category: "addons",
+      baseInstalls: 26317,
+      icon: "icon_11.png",
+      description: "Go AFK and watch a cinematic camera orbit, rotate, and hover automatically through your world. 6 shot types, smooth transitions, adjustable idle time. No cheats needed. Optimized for achievements.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v10/AFK_Director.1.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Dark Souls Visuals",
+      tag: "Shader",
+      category: "addons",
+      baseInstalls: 21534,
+      icon: "icon_12.png",
+      description: "Dark Souls Visuals is a shader pack for Minecraft: Bedrock Edition that recreates the moody, atmospheric lighting and color grading of Dark Souls. Expect deep shadows, muted tones, and dramatic contrast for a darker, more cinematic look while you play.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v1.1/Dark.Souls.Visuals.v2.3.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Dreamy Vibrant Visuals",
+      tag: "Shader",
+      category: "addons",
+      baseInstalls: 18762,
+      icon: "icon_13.png",
+      description: "Dreamy Vibrant Visuals is a shader pack for Minecraft: Bedrock Edition that boosts colors, lighting, and sky tones for a soft, vibrant, dreamlike look. Great for sunsets, screenshots, and cinematic builds without heavy performance cost.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v1.2/Dreamy.Vibrant.Visuals.-.Default.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Definitive Vibrant Visuals",
+      tag: "Shader",
+      category: "addons",
+      baseInstalls: 23148,
+      icon: "icon_14.png",
+      description: "Definitive Vibrant Visuals is a shader pack for Minecraft: Bedrock Edition with punchy, high-contrast colors, warmer sunsets, and richer lighting for a bolder, more dramatic look than the default visuals.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v1.3/Definitive.Vibrant.Visuals.-.Default.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Ethereal Mystic Lite",
+      tag: "Shader",
+      category: "addons",
+      baseInstalls: 16278,
+      icon: "icon_15.png",
+      description: "Ethereal Mystic Lite is a lightweight shader pack for Minecraft: Bedrock Edition that adds soft, glowing lighting and a mystical, fantasy atmosphere while staying performance-friendly for most devices.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v1.4/Ethereal.Mystic.Lite.Shader.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Mysteriel Fantasy Visuals",
+      tag: "Shader",
+      category: "addons",
+      baseInstalls: 19487,
+      icon: "icon_16.png",
+      description: "Mysteriel Fantasy Visuals is a shader pack for Minecraft: Bedrock Edition with rich, saturated colors and dreamy light rays for a magical, fantasy-book atmosphere while exploring your world.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v1.5/mysteriel.fantasy.visuals.NORMAL.v.0.1.1.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    },
+    {
+      name: "Revolution Vibrant Visuals",
+      tag: "Shader",
+      category: "addons",
+      baseInstalls: 22894,
+      icon: "icon_17.png",
+      description: "Revolution Vibrant Visuals is a realistic-style shader pack for Minecraft: Bedrock Edition, boosting lighting, color grading, and overall detail for a sharper, more true-to-life look while keeping good performance.",
+      download: "https://github.com/RIPDARK-Youtube/RIPDARK/releases/download/v1.6/Revolution.Vibrant.Visuals.-.Realistic.mcpack",
+      size: "—",
+      updated: "2026-09-04"
+    }
+  ];
+
+  const grid = document.getElementById('grid');
+  const searchInput = document.getElementById('search');
+  const resultCount = document.getElementById('resultCount');
+  const overlay = document.getElementById('overlay');
+  const sheet = document.getElementById('sheet');
+
+  const FALLBACK_ICON = "data:image/svg+xml;utf8," + encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><rect width='56' height='56' fill='%231e1830'/><rect x='16' y='16' width='24' height='24' fill='%239b7fd4' opacity='0.5'/></svg>`
+  );
+
+  function renderGrid(list) {
+    grid.innerHTML = '';
+    if (list.length === 0) {
+      grid.innerHTML = '<p class="empty">Nothing found. Try a different keyword.</p>';
+      resultCount.textContent = '';
+      return;
+    }
+    resultCount.textContent = list.length + (list.length === 1 ? ' item' : ' items');
+    list.forEach((addon, i) => {
+      const card = document.createElement('button');
+      card.className = 'card';
+      card.setAttribute('aria-label', 'Open ' + addon.name);
+      card.innerHTML = `
+        <img class="card-icon" src="${addon.icon}" onerror="this.src='${FALLBACK_ICON}'" alt="">
+        <span class="card-name">${addon.name}</span>
+        <span class="card-tag">${addon.tag}</span>
+        ${addon.updated ? `<span class="card-updated">Updated ${addon.updated}</span>` : ''}
+      `;
+      card.addEventListener('click', () => openSheet(addon));
+      grid.appendChild(card);
+    });
+  }
+
+  const COUNTER_NAMESPACE = 'darksmp-ripdark-addons';
+
+  function slugify(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function updateInstallsLabel(value, base) {
+    const el = document.getElementById('sheetInstalls');
+    const total = value + (base || 0);
+    el.textContent = total.toLocaleString() + (total === 1 ? ' install' : ' installs');
+  }
+
+  function openSheet(addon) {
+    document.getElementById('sheetIcon').src = addon.icon;
+    document.getElementById('sheetIcon').onerror = function(){ this.src = FALLBACK_ICON; };
+    document.getElementById('sheetTag').textContent = addon.tag;
+    document.getElementById('sheetTitle').textContent = addon.name;
+    document.getElementById('sheetDesc').textContent = addon.description;
+    document.getElementById('sheetDownload').href = addon.download;
+    document.getElementById('sheetSize').textContent = addon.size ? ('File size: ' + addon.size) : '';
+    document.getElementById('sheetUpdated').textContent = addon.updated ? ('Last updated: ' + addon.updated) : '';
+    document.getElementById('subWarning').classList.remove('show');
+    if (!hasSubscribed) {
+      document.getElementById('sheetDownload').classList.add('locked');
+      document.getElementById('subConfirm').classList.remove('confirmed');
+      document.getElementById('subConfirm').textContent = 'I subscribed — unlock download';
+    } else {
+      document.getElementById('sheetDownload').classList.remove('locked');
+    }
+
+    const key = slugify(addon.name);
+    const base = addon.baseInstalls || 0;
+    document.getElementById('sheetInstalls').textContent = 'Loading installs\u2026';
+    document.getElementById('sheetDownload').dataset.key = key;
+    document.getElementById('sheetDownload').dataset.base = base;
+
+    fetch('https://abacus.jasoncameron.dev/get/' + COUNTER_NAMESPACE + '/' + key)
+      .then(r => r.ok ? r.json() : { value: 0 })
+      .then(data => updateInstallsLabel(data.value || 0, base))
+      .catch(() => updateInstallsLabel(0, base));
+
+    overlay.classList.add('open');
+    sheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // ---------- Subscribe gate ----------
+  // Note: YouTube does not provide any way to verify a real subscription from
+  // outside the platform. This unlocks on trust, once the visitor confirms
+  // they subscribed via the button below the widget.
+  let hasSubscribed = false;
+
+  document.getElementById('subConfirm').addEventListener('click', function() {
+    hasSubscribed = true;
+    this.classList.add('confirmed');
+    this.textContent = 'Subscribed ✓';
+    document.getElementById('sheetDownload').classList.remove('locked');
+    document.getElementById('subWarning').classList.remove('show');
+  });
+
+  document.getElementById('sheetDownload').addEventListener('click', function(e) {
+    if (!hasSubscribed) {
+      e.preventDefault();
+      document.getElementById('subWarning').classList.add('show');
+      return;
+    }
+    const key = this.dataset.key;
+    const base = parseInt(this.dataset.base, 10) || 0;
+    if (!key) return;
+    fetch('https://abacus.jasoncameron.dev/hit/' + COUNTER_NAMESPACE + '/' + key)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data) updateInstallsLabel(data.value, base); })
+      .catch(() => {});
+  });
+
+  document.getElementById('subWarningClose').addEventListener('click', function() {
+    document.getElementById('subWarning').classList.remove('show');
+  });
+
+  function closeSheet() {
+    overlay.classList.remove('open');
+    sheet.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  overlay.addEventListener('click', closeSheet);
+
+  function applyFilters() {
+    const q = searchInput.value.trim().toLowerCase();
+    const filtered = addons.filter(a =>
+      a.name.toLowerCase().includes(q) ||
+      a.tag.toLowerCase().includes(q) ||
+      a.description.toLowerCase().includes(q)
+    );
+    renderGrid(filtered);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  applyFilters();
+</script>
+
+</body>
+</html>
